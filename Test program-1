@@ -1,0 +1,80 @@
+
+
+1. Program 1: Interface for Animal
+
+```java
+interface Animal {
+    void eat();
+    void sleep();
+}
+
+class Dog implements Animal {
+
+    public void eat() {
+        System.out.println("Dog is eating");
+    }
+
+    
+    public void sleep() {
+        System.out.println("Dog is sleeping");
+    }
+}
+
+public class AnimalInterface {
+    public static void main(String[] args) {
+        Dog myDog = new Dog();
+        myDog.eat();
+        myDog.sleep();
+    }
+}
+```
+
+2. Program 2: Interface for Shape
+
+```java
+interface Shape {
+    void draw();
+}
+
+class Circle implements Shape {
+
+    public void draw() {
+        System.out.println("Circle is drawn");
+    }
+}
+
+public class ShapeInterface {
+    public static void main(String[] args) {
+        Circle myCircle = new Circle();
+        myCircle.draw();
+    }
+}
+```
+
+3. Program 3: Interface for Vehicle
+
+```java
+interface Vehicle {
+    void start();
+    void stop();
+}
+
+class Car implements Vehicle {
+  
+    public void start() {
+        System.out.println("Car is starting");
+    }
+
+  
+    public void stop() {
+        System.out.println("Car is stopping");
+    }
+}
+
+public class VehicleInterface {
+    public static void main(String[] args) {
+        Car myCar = new Car();
+        myCar.start();
+        myCar.stop();
+    }
+```
