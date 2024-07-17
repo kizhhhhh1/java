@@ -1,0 +1,242 @@
+23. Program to print the below pattern:
+public class NumberPattern {
+    public static void main(String[] args) {
+        for (int i = 1; i <= 4; i++) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print(i + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+24. Program to print the below pattern:
+public class SquarePattern {
+    public static void main(String[] args) {
+        for (int i = 1; i <= 4; i++) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print((i * i) + (j - 1) * (2 * i - 1) + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+25. Program to print the below pattern:
+public class PyramidPattern {
+    public static void main(String[] args) {
+        for (int i = 1; i <= 4; i++) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print(i + " ");
+            }
+            System.out.println();
+        }
+        for (int i = 3; i >= 1; i--) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print(i + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+26. Program to print hollow square dollar pattern:
+import java.util.Scanner;
+
+public class HollowDollarSquare {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the size of the square: ");
+        int size = scanner.nextInt();
+
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                if (i == 0 || i == size - 1 || j == 0 || j == size - 1) {
+                    System.out.print("$ ");
+                } else {
+                    System.out.print("  ");
+                }
+            }
+            System.out.println();
+        }
+    }
+}
+27. Program to print inverted pyramid pattern:
+import java.util.Scanner;
+
+public class InvertedPyramid {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the number of rows: ");
+        int rows = scanner.nextInt();
+
+        for (int i = rows; i >= 1; i--) {
+            for (int j = 1; j <= rows - i; j++) {
+                System.out.print(" ");
+            }
+            for (int k = 1; k <= (2 * i - 1); k++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+    }
+}
+28. Program to reverse a number using loop:
+import java.util.Scanner;
+
+public class ReverseNumber {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int number = scanner.nextInt();
+        int reverse = 0;
+
+        while (number != 0) {
+            int digit = number % 10;
+            reverse = reverse * 10 + digit;
+            number /= 10;
+        }
+        System.out.println("Reverse Number: " + reverse);
+    }
+}
+29. Program to convert decimal to binary and print the reverse:
+import java.util.Scanner;
+
+public class DecimalToBinaryReverse {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a decimal number: ");
+        int number = scanner.nextInt();
+        String binary = Integer.toBinaryString(number);
+        String reversedBinary = new StringBuilder(binary).reverse().toString();
+        int reversedNumber = Integer.parseInt(reversedBinary, 2);
+        System.out.println("Reversed binary to decimal: " + reversedNumber);
+    }
+}
+30. Program to check voting eligibility:
+import java.util.Scanner;
+
+public class VotingEligibility {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter your age: ");
+        int age = scanner.nextInt();
+
+        if (age >= 18) {
+            System.out.println("You are eligible to vote.");
+        } else {
+            System.out.println("You are allowed to vote after " + (18 - age) + " years.");
+        }
+    }
+}
+31. Program to find the LCM and GCD of n numbers:
+import java.util.Scanner;
+
+public class LCMAndGCD {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the number of elements: ");
+        int n = scanner.nextInt();
+        int[] numbers = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            System.out.print("Enter number " + (i + 1) + ": ");
+            numbers[i] = scanner.nextInt();
+        }
+
+        int gcd = numbers[0];
+        int lcm = numbers[0];
+
+        for (int i = 1; i < n; i++) {
+            gcd = findGCD(gcd, numbers[i]);
+            lcm = findLCM(lcm, numbers[i], gcd);
+        }
+
+        System.out.println("GCD: " + gcd);
+        System.out.println("LCM: " + lcm);
+    }
+
+    public static int findGCD(int a, int b) {
+        if (b == 0) {
+            return a;
+        }
+        return findGCD(b, a % b);
+    }
+
+    public static int findLCM(int a, int b, int gcd) {
+        return (a * b) / gcd;
+    }
+}
+32. Program to calculate simple interest:
+import java.util.Scanner;
+
+public class SimpleInterest {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the principal amount: ");
+        double principal = scanner.nextDouble();
+        System.out.print("Enter the number of years: ");
+        int years = scanner.nextInt();
+        System.out.print("Is the customer a senior citizen (y/n): ");
+        char isSenior = scanner.next().charAt(0);
+
+        double rateOfInterest = (isSenior == 'y' || isSenior == 'Y') ? 12 : 10;
+        double interest = (principal * years * rateOfInterest) / 100;
+        System.out.println("Interest: " + interest);
+    }
+}
+33. Program to print the Fibonacci series:
+import java.util.Scanner;
+
+public class FibonacciSeries {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the n value: ");
+        int n = scanner.nextInt();
+        int a = 0, b = 1;
+
+        System.out.print(a + " " + b + " ");
+        for (int i = 2; i < n; i++) {
+            int next = a + b;
+            System.out.print(next + " ");
+            a = b;
+            b = next;
+        }
+    }
+}
+34. Program to find even sum of Fibonacci series till number N:
+import java.util.Scanner;
+
+public class EvenSumFibonacci {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the n value: ");
+        int n = scanner.nextInt();
+        int a = 0, b = 1, sum = 0;
+
+        for (int i = 0; i <= 2 * n; i++) {
+            if (i % 2 == 0) {
+                sum += a;
+            }
+            int next = a + b;
+            a = b;
+            b = next;
+        }
+        System.out.println("Even sum of Fibonacci series till " + n + " is: " + sum);
+    }
+}
+35. Program to print numbers from M to N by skipping K numbers:
+import java.util.Scanner;
+
+public class SkipNumbers {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the start number (M): ");
+        int M = scanner.nextInt();
+        System.out.print("Enter the end number (N): ");
+        int N = scanner.nextInt();
+        System.out.print("Enter the number to skip (K): ");
+        int K = scanner.nextInt();
+
+        for (int i = M; i <= N; i += K) {
+            System.out.print(i + " ");
+        }
+    }
+}
