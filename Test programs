@@ -1,0 +1,166 @@
+
+
+1. Program 1: Interface for Animal
+
+```java
+interface Animal {
+    void eat();
+    void sleep();
+}
+
+class Dog implements Animal {
+
+    public void eat() {
+        System.out.println("Dog is eating");
+    }
+
+    
+    public void sleep() {
+        System.out.println("Dog is sleeping");
+    }
+}
+
+public class AnimalInterface {
+    public static void main(String[] args) {
+        Dog myDog = new Dog();
+        myDog.eat();
+        myDog.sleep();
+    }
+}
+```
+
+2. Program 2: Interface for Shape
+
+```java
+interface Shape {
+    void draw();
+}
+
+class Circle implements Shape {
+
+    public void draw() {
+        System.out.println("Circle is drawn");
+    }
+}
+
+public class ShapeInterface {
+    public static void main(String[] args) {
+        Circle myCircle = new Circle();
+        myCircle.draw();
+    }
+}
+```
+
+3. Program 3: Interface for Vehicle
+
+```java
+interface Vehicle {
+    void start();
+    void stop();
+}
+
+class Car implements Vehicle {
+  
+    public void start() {
+        System.out.println("Car is starting");
+    }
+
+  
+    public void stop() {
+        System.out.println("Car is stopping");
+    }
+}
+
+public class VehicleInterface {
+    public static void main(String[] args) {
+        Car myCar = new Car();
+        myCar.start();
+        myCar.stop();
+    }
+
+18-07-2024
+
+1.
+public class ExceptionHandlingExample 
+{
+
+    public static void main(String[] args)
+{
+        try 
+{
+int result = divideNumbers(10, 0);
+            System.out.println("Result of division: " + result);
+        }
+catch (ArithmeticException e)
+{
+            System.out.println("Error: Division by zero is not allowed.");
+        } 
+finally 
+{
+            System.out.println("End of program.");
+        }
+    }
+
+    public static int divideNumbers(int dividend, int divisor) 
+{
+        return dividend / divisor;
+    }
+}
+
+2.
+class InvalidAgeException extends Exception 
+{
+    public InvalidAgeException(String message) 
+    {
+        super(message);
+    }
+}
+public class CustomExceptionExample 
+{
+    public static void main(String[] args) 
+    {
+        try
+        {
+            checkAge(15);
+            System.out.println("Age verified successfully.");
+        } catch (InvalidAgeException e) 
+        {
+     System.out.println("Invalid Age: " + e.getMessage());
+        }
+    }
+
+    public static void checkAge(int age) throws InvalidAgeException
+    {
+       
+        if (age < 18)
+        {
+            throw new InvalidAgeException("Age must be 18 or above.");
+        }
+    }
+}
+
+3.
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class FileHandlingExample 
+{
+
+    public static void main(String[] args) 
+    {
+        File file = new File("nonexistentfile.txt");
+        try
+        {
+            FileReader reader = new FileReader(file);
+            System.out.println("File exists and can be read.");
+            reader.close();
+        } 
+        catch (IOException e) 
+        {
+          System.out.println("Error: File not found or cannot be read.");
+        } finally {
+            System.out.println("End of program.");
+        }
+    }
+}
