@@ -1,0 +1,305 @@
+1. // Parent class
+class Parent {
+    // Method to print even numbers from 1 to 20
+    public void even() {
+        System.out.print("Even numbers (1 to 20): ");
+        for (int i = 1; i <= 20; i++) {
+            if (i % 2 == 0) {
+                System.out.print(i + " ");
+            }
+        }
+        System.out.println();
+    }
+
+    // Method to print odd numbers from 1 to 20
+    public void odd() {
+        System.out.print("Odd numbers (1 to 20): ");
+        for (int i = 1; i <= 20; i++) {
+            if (i % 2 != 0) {
+                System.out.print(i + " ");
+            }
+        }
+        System.out.println();
+    }
+
+    // Method to print prime numbers from 1 to 20
+    public void prime() {
+        System.out.print("Prime numbers (1 to 20): ");
+        for (int i = 1; i <= 20; i++) {
+            if (isPrime(i)) {
+                System.out.print(i + " ");
+            }
+        }
+        System.out.println();
+    }
+
+    // Helper method to check if a number is prime
+    private boolean isPrime(int num) {
+        if (num <= 1) {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
+// Child class inheriting from Parent class
+class Child extends Parent {
+    // Method to print even numbers from 1 to 30 (overridden)
+    @Override
+    public void even() {
+        System.out.print("Even numbers (1 to 30): ");
+        for (int i = 1; i <= 30; i++) {
+            if (i % 2 == 0) {
+                System.out.print(i + " ");
+            }
+        }
+        System.out.println();
+    }
+
+    // Method to print odd numbers from 1 to 30 (overridden)
+    @Override
+    public void odd() {
+        System.out.print("Odd numbers (1 to 30): ");
+        for (int i = 1; i <= 30; i++) {
+            if (i % 2 != 0) {
+                System.out.print(i + " ");
+            }
+        }
+        System.out.println();
+    }
+
+    // Method to print prime numbers from 1 to 30 (overridden)
+    @Override
+    public void prime() {
+        System.out.print("Prime numbers (1 to 30): ");
+        for (int i = 1; i <= 30; i++) {
+            if (isPrime(i)) {
+                System.out.print(i + " ");
+            }
+        }
+        System.out.println();
+    }
+
+    // Helper method to check if a number is prime
+    private boolean isPrime(int num) {
+        if (num <= 1) {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
+// Main class to demonstrate usage
+public class Main {
+    public static void main(String[] args) {
+        // Creating object of Child class
+        Child child = new Child();
+
+        // Calling overridden methods
+        child.even();
+        child.odd();
+        child.prime();
+    }
+}
+
+
+2. // Parent class
+class Parent {
+    int a;
+    int b;
+
+    // Default constructor with a=10, b=15
+    public Parent() {
+        this.a = 10;
+        this.b = 15;
+    }
+
+    // Parameterized constructor with a=20, b=25
+    public Parent(int a, int b) {
+        this.a = a;
+        this.b = b;
+    }
+
+    // Method to display values of a and b
+    public void disp() {
+        System.out.println("Values of a and b: a=" + a + ", b=" + b);
+    }
+}
+
+// Main class to demonstrate usage
+public class Main {
+    public static void main(String[] args) {
+        // Creating objects using default constructor and parameterized constructor
+        Parent obj1 = new Parent(); // Using default constructor
+        Parent obj2 = new Parent(20, 25); // Using parameterized constructor
+
+        // Calling disp() method for both objects
+        obj1.disp(); // Will display values: a=10, b=15
+        obj2.disp(); // Will display values: a=20, b=25
+    }
+}
+
+
+// Base class
+class Shape {
+    // Method to calculate and print area of a square
+    public void area(int a, int b) {
+        int area = a * a;
+        System.out.println("Area of square with side " + a + " = " + area);
+    }
+}
+
+// Derived class inheriting from Shape
+class Rectangle extends Shape {
+    // Override method to calculate and print area of a rectangle
+    @Override
+    public void area(int length, int breadth) {
+        int area = length * breadth;
+        System.out.println("Area of rectangle with length " + length + " and breadth " + breadth + " = " + area);
+    }
+}
+
+// Main class to demonstrate usage
+public class Main {
+    public static void main(String[] args) {
+        Shape shape = new Shape(); // Creating object of base class
+        shape.area(5, 5); // Calls base class method to print area of square
+        
+        Rectangle rectangle = new Rectangle(); // Creating object of derived class
+        rectangle.area(6, 4); // Calls derived class method to print area of rectangle
+    }
+}
+
+
+class OverloadExample {
+
+    // Method to sum two integers
+    public int sum(int a, int b) {
+        return a + b;
+    }
+
+    // Method to sum three integers
+    public int sum(int a, int b, int c) {
+        return a + b + c;
+    }
+
+    // Method to sum four integers
+    public int sum(int a, int b, int c, int d) {
+        return a + b + c + d;
+    }
+
+    // Method to sum one integer
+    public int sum(int a) {
+        return a;
+    }
+
+    public static void main(String[] args) {
+        OverloadExample example = new OverloadExample();
+
+        System.out.println("Sum of two numbers (10, 20): " + example.sum(10, 20));
+        System.out.println("Sum of three numbers (10, 20, 30): " + example.sum(10, 20, 30));
+        System.out.println("Sum of four numbers (10, 20, 30, 40): " + example.sum(10, 20, 30, 40));
+        System.out.println("Sum of one number (5): " + example.sum(5));
+    }
+}
+
+
+class OverloadExample {
+
+    // Method to sum two integers
+    public int sum(int a, int b) {
+        return a + b;
+    }
+
+    // Method to sum two double numbers
+    public double sum(double a, double b) {
+        return a + b;
+    }
+
+    // Method to sum an integer and a double
+    public double sum(int a, double b) {
+        return a + b;
+    }
+
+    public static void main(String[] args) {
+        OverloadExample example = new OverloadExample();
+
+        System.out.println("Sum of two integers (10, 20): " + example.sum(10, 20));
+        System.out.println("Sum of two double numbers (10.5, 20.7): " + example.sum(10.5, 20.7));
+        System.out.println("Sum of an integer and a double (15, 25.5): " + example.sum(15, 25.5));
+    }
+}
+
+
+// Interface defining methods for a Tree
+interface Tree {
+    void fruits(String fruitType, int count); // Method with 2 parameters
+    void leaves(String leafType, int count, String color); // Method with 3 parameters
+    void flowers(String flowerType, int count, String season, String color); // Method with 4 parameters
+}
+
+// Class implementing Tree interface - Branch1
+class Branch1 implements Tree {
+    @Override
+    public void fruits(String fruitType, int count) {
+        System.out.println("Branch1: Fruits - Type: " + fruitType + ", Count: " + count);
+    }
+
+    @Override
+    public void leaves(String leafType, int count, String color) {
+        System.out.println("Branch1: Leaves - Type: " + leafType + ", Count: " + count + ", Color: " + color);
+    }
+
+    @Override
+    public void flowers(String flowerType, int count, String season, String color) {
+        System.out.println("Branch1: Flowers - Type: " + flowerType + ", Count: " + count + ", Season: " + season + ", Color: " + color);
+    }
+}
+
+// Class implementing Tree interface - Branch2
+class Branch2 implements Tree {
+    @Override
+    public void fruits(String fruitType, int count) {
+        System.out.println("Branch2: Fruits - Type: " + fruitType + ", Count: " + count);
+    }
+
+    @Override
+    public void leaves(String leafType, int count, String color) {
+        System.out.println("Branch2: Leaves - Type: " + leafType + ", Count: " + count + ", Color: " + color);
+    }
+
+    @Override
+    public void flowers(String flowerType, int count, String season, String color) {
+        System.out.println("Branch2: Flowers - Type: " + flowerType + ", Count: " + count + ", Season: " + season + ", Color: " + color);
+    }
+}
+
+// Main class to demonstrate usage
+public class Main {
+    public static void main(String[] args) {
+        Branch1 branch1 = new Branch1();
+        Branch2 branch2 = new Branch2();
+
+        // Calling methods for Branch1
+        branch1.fruits("Apple", 10);
+        branch1.leaves("Maple", 50, "Green");
+        branch1.flowers("Rose", 5, "Spring", "Red");
+
+        System.out.println();
+
+        // Calling methods for Branch2
+        branch2.fruits("Orange", 15);
+        branch2.leaves("Oak", 30, "Brown");
+        branch2.flowers("Tulip", 8, "Summer", "Yellow");
+    }
+}
