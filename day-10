@@ -1,0 +1,318 @@
+1.
+
+import java.util.Scanner;
+
+public class DaysConverter {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the number of days: ");
+        int totalDays = scanner.nextInt();
+       
+        convertDays(totalDays);
+
+     
+        int[] testCases = {756};
+        for (int testCase : testCases) {
+            System.out.println("Input days: " + testCase);
+            convertDays(testCase);
+        }
+    }
+
+    private static void convertDays(int totalDays) {
+        if (totalDays < 0) {
+            System.out.println("Please enter a non-negative number of days.");
+            return;
+        }
+        int years = totalDays / 365;
+        int weeks = (totalDays % 365) / 7;
+        int days = (totalDays % 365) % 7;
+       
+        System.out.println("No. of years: " + years);
+        System.out.println("No. of weeks: " + weeks);
+        System.out.println("No. of days: " + days);
+    }
+}
+
+2.
+
+import java.util.Scanner;
+
+public class CollegeUsers {
+
+    public static int calculateStudentUsers(int totalUsers, int staffUsers) {
+        if (totalUsers < 0 || staffUsers < 0) {
+            System.out.println("Invalid input: Number of users cannot be negative.");
+            return -1;
+        }
+
+        int nonTeachingStaffUsers = staffUsers / 3;
+        int studentUsers = totalUsers - staffUsers - nonTeachingStaffUsers;
+
+        if (studentUsers < 0) {
+            System.out.println("Invalid input: Total users must be greater than or equal to the sum of staff and non-teaching staff users.");
+            return -1;
+        }
+
+        return studentUsers;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+       
+        System.out.print("Enter the total number of users: ");
+        int totalUsers = scanner.nextInt();
+        System.out.print("Enter the number of staff users: ");
+        int staffUsers = scanner.nextInt();
+
+       
+        int studentUsers = calculateStudentUsers(totalUsers, staffUsers);
+        if (studentUsers != -1) {
+            System.out.println("Student Users: " + studentUsers);
+        }
+
+   
+        int[][] testCases = {
+            {0, 0},
+            {-143, 0},
+            {1026, 1026},
+            {450, 540},
+            {600, 450}
+        };
+
+        for (int[] testCase : testCases) {
+            System.out.println("\nTest case - Total Users: " + testCase[0] + ", Staff Users: " + testCase[1]);
+            studentUsers = calculateStudentUsers(testCase[0], testCase[1]);
+            if (studentUsers != -1) {
+                System.out.println("Student Users: " + studentUsers);
+            }
+        }
+    }
+}
+3.
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class FactorsFinder {
+
+    public static List<Integer> getFactors(int number) {
+        List<Integer> factors = new ArrayList<>();
+        if (number < 1) {
+            return factors;
+        }
+        for (int i = 1; i <= number; i++) {
+            if (number % i == 0) {
+                factors.add(i);
+            }
+        }
+        return factors;
+    }
+
+    public static void printFactors(int number, int n) {
+        List<Integer> factors = getFactors(number);
+        int numberOfFactors = factors.size();
+        System.out.println("Number of factors = " + numberOfFactors);
+        if (n > 0 && n <= numberOfFactors) {
+            System.out.println(n + "th factor of " + number + " = " + factors.get(n - 1));
+        } else {
+            System.out.println("Invalid input: N is out of range.");
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Given Number: ");
+        int givenNumber = scanner.nextInt();
+        System.out.print("N: ");
+        int n = scanner.nextInt();
+
+   
+        printFactors(givenNumber, n);
+
+       
+        int[][] testCases = {
+            {512, 6},
+            {343, 7},
+            {1024, 0},
+            {-6561, 3},
+            {0, 2}
+        };
+
+        for (int[] testCase : testCases) {
+            System.out.println("\nTest case - Given Number: " + testCase[0] + ", N: " + testCase[1]);
+            printFactors(testCase[0], testCase[1]);
+        }
+    }
+}
+4.
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class PrimeNumbersAfterNth {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("N: ");
+        int n = scanner.nextInt();
+       
+        int nthPrime = findNthPrime(n);
+        System.out.println(n + "rd Prime number is " + nthPrime);
+       
+       
+        List<Integer> primesAfterNth = findNextNPrimes(nthPrime, n);
+        System.out.println(n + " prime numbers after " + nthPrime + " are: " + primesAfterNth);
+    }
+
+    private static int findNthPrime(int n) {
+        int count = 0, num = 2;
+        while (count < n) {
+            if (isPrime(num)) {
+                count++;
+            }
+            num++;
+        }
+        return num - 1;
+    }
+
+    private static List<Integer> findNextNPrimes(int afterPrime, int n) {
+        List<Integer> primes = new ArrayList<>();
+        int count = 0, num = afterPrime + 1;
+        while (count < n) {
+            if (isPrime(num)) {
+                primes.add(num);
+                count++;
+            }
+            num++;
+        }
+        return primes;
+    }
+
+ 
+    private static boolean isPrime(int num) {
+        if (num <= 1) return false;
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) return false;
+        }
+        return true;
+    }
+}
+5.
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class PrimeNumbersAfterNth {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("N: ");
+        int n = scanner.nextInt();
+       
+        int nthPrime = findNthPrime(n);
+        System.out.println(n + "rd Prime number is " + nthPrime);
+       
+       
+        List<Integer> primesAfterNth = findNextNPrimes(nthPrime, n);
+        System.out.println(n + " prime numbers after " + nthPrime + " are: " + primesAfterNth);
+    }
+
+    private static int findNthPrime(int n) {
+        int count = 0, num = 2;
+        while (count < n) {
+            if (isPrime(num)) {
+                count++;
+            }
+            num++;
+        }
+        return num - 1;
+    }
+
+    private static List<Integer> findNextNPrimes(int afterPrime, int n) {
+        List<Integer> primes = new ArrayList<>();
+        int count = 0, num = afterPrime + 1;
+        while (count < n) {
+            if (isPrime(num)) {
+                primes.add(num);
+                count++;
+            }
+            num++;
+        }
+        return primes;
+    }
+
+ 
+    private static boolean isPrime(int num) {
+        if (num <= 1) return false;
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) return false;
+        }
+        return true;
+    }
+}
+6.
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Scanner;
+
+public class UniquePermutations {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Given Number: ");
+        String number = scanner.next();
+
+        Set<String> permutations = new HashSet<>();
+        permute(number.toCharArray(), 0, permutations);
+
+        System.out.println("Permutations are:");
+        permutations.forEach(System.out::println);
+    }
+
+   
+    private static void permute(char[] array, int index, Set<String> permutations) {
+        if (index == array.length - 1) {
+            permutations.add(new String(array));
+        } else {
+            for (int i = index; i < array.length; i++) {
+                swap(array, index, i);
+                permute(array, index + 1, permutations);
+                swap(array, index, i); // backtrack
+            }
+        }
+    }
+
+   
+    private static void swap(char[] array, int i, int j) {
+        char temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+}
+7.
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class NumberSquareArray {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+       
+
+        System.out.print("Enter the lower range: ");
+        int lower = scanner.nextInt();
+        System.out.print("Enter the upper range: ");
+        int upper = scanner.nextInt();
+
+
+        List<String> result = new ArrayList<>();
+        for (int i = lower; i <= upper; i++) {
+            result.add("(" + i + ", " + (i * i) + ")");
+        }
+
+        System.out.println(result);
+    }
+}
